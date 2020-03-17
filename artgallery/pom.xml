@@ -17,6 +17,14 @@
   
   <dependencies>
   
+  <!-- link backend project -->
+	  <dependency>
+		  <groupId>net.praveen</groupId>
+		  <artifactId>artgallerybackend</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+	  </dependency>
+	  
+  
   <!-- JAVA EE API -->
 	<dependency>
 	    <groupId>javax</groupId>

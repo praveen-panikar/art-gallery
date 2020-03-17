@@ -13,9 +13,19 @@
   <properties>
    <maven.compiler.source>1.8</maven.compiler.source>
    <maven.compiler.target>1.8</maven.compiler.target>
+   <spring.version>5.2.4.RELEASE</spring.version>
 </properties>
   
   <dependencies>
+  <!-- SPRING -->
+  	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+  
+  
+  
   
   <!-- JAVA EE API -->
 	<dependency>
