@@ -1,20 +1,30 @@
 package net.praveen.artgallery.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.praveen.artgallery.exception.ProductNotFoundException;
 import net.praveen.artgallerybackend.dao.CategoryDAO;
+import net.praveen.artgallerybackend.dao.ProductDAO;
 import net.praveen.artgallerybackend.dto.Category;
+import net.praveen.artgallerybackend.dto.Product;
 
 @Controller
 public class PageController {
 
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
+
 	
 	@Autowired
 	private CategoryDAO categoryDao;
+	
+	@Autowired
+	private ProductDAO productDAO;
 	
 	
 	
@@ -23,6 +33,10 @@ public class PageController {
 		
 		ModelAndView mv= new ModelAndView("page");
 		mv.addObject("title","Home");
+		
+		logger.info("Inside PageController index method - INFO");
+		logger.info("Inside PageController index method - DEBUG");
+
 		
 		//passing the list of categories
 		mv.addObject("categories",categoryDao.list());	
@@ -80,6 +94,24 @@ public class PageController {
 		mv.addObject("category", category);
 
 		mv.addObject("userClickCategoryProducts",true);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/show/{id}/product") 
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException{
+		ModelAndView mv = new ModelAndView("page");
+		
+		Product product = productDAO.get(id);
+		
+		if(product ==null)
+			throw new ProductNotFoundException();
+		
+		mv.addObject("title", product.getProd_name());
+		mv.addObject("product", product);
+		
+		mv.addObject("userClickShowProduct", true);
+		
+		
 		return mv;
 	}
 

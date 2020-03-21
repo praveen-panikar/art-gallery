@@ -4,8 +4,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:url var="csss" value="/resources/csss" />
-<spring:url var="jss" value="/resources/jss" />
+<spring:url var="css" value="/resources/css" />
+<spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
@@ -23,17 +23,16 @@
 
 <script>
 	window.menu = '${title}';
+	
+	window.contextRoot = '${contextRoot}';
 </script>
-<script src="${js}/myapp.js"></script>
+
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.css"/>
+<link href="${css}/myapp.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,9 +63,26 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 			
+			<!-- load when user click view/show product -->
+			<c:if test="${userClickShowProduct == true or userClickCategoryProducts == true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
+			
 		</div>
 		
 		<%@include file="./shared/footer.jsp"%>
+		
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script>
+			
+		<script src="${js}/myapp.js"></script>
 
 	</div>
 </body>
