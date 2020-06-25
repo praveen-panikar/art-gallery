@@ -13,6 +13,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
+
+
 <title>Art Gallery - ${title}</title>
 <!-- 
 <link href="${csss}/bootstrap.min.css" rel="stylesheet">
@@ -68,6 +72,15 @@
 				<%@include file="singleProduct.jsp"%>
 			</c:if>
 			
+			<div assign="center">
+			<c:if test="${userClickManageProducts == true or userClickCategoryProducts == true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+			</div>
+			
+			<c:if test="${userClickShowCart == true or userClickCategoryProducts == true}">
+				<%@include file="cart.jsp"%>
+			</c:if>
 			
 		</div>
 		
@@ -82,8 +95,10 @@
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.js"></script>
 			
+		<script src="${js}/bootbox.min.js"></script>
 		<script src="${js}/myapp.js"></script>
-
+		<script src="${js}/jquery.validate.js"></script>
+		
 	</div>
 </body>
 </html>

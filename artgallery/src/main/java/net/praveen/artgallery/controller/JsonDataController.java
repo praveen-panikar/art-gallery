@@ -22,6 +22,13 @@ public class JsonDataController {
 	@RequestMapping("/all/products")
 	@ResponseBody
 	public List<Product> getAllProductsList() {		
+		return productDAO.listActiveProducts();
+				
+	}
+	
+	@RequestMapping("/admin/all/products")
+	@ResponseBody
+	public List<Product> getAllProductsForAdmin() {		
 		return productDAO.list();
 				
 	}

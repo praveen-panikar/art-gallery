@@ -43,8 +43,17 @@
 			<h4>Price: <strong> &#8377; ${product.prod_price} /-</strong></h4>
 			<hr/>
 			
+			<security:authorize access="hasAuthority('USER')">
 			<a href="${contextRoot}/cart/add/${product.pk_prod_id}/product" class="btn btn-success">
 				<span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+			</security:authorize>
+				
+				
+			<security:authorize access="hasAuthority('ADMIN')">
+				<a href="${contextRoot}/manage/${product.pk_prod_id}/product" class="btn btn-success">
+				<span class="glyphicon glyphicon-shopping-pencil"></span> Edit</a>
+			
+			</security:authorize>
 		</div>
 	
 	

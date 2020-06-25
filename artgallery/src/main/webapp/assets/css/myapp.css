@@ -6,7 +6,9 @@
 .wrapper {	
 	min-height:100%;
 	position: relative;
+	
 }
+
 
 
 .content {
@@ -32,6 +34,11 @@
 
 .has-success {
 	color: #4582ec;
+}
+
+.adminDataTableImg {
+	height: 50px;
+	width:50px;
 }
 
 /*Toggle Switch code*/
@@ -178,4 +185,16 @@ input:checked + .slider:before {
 		z-index:9999;
 		background:url(../images/pre-loader.gif) 50% no-repeat #fff
 }
+
+
+.cartImg{
+	width: 100px;
+	heiht: 100px;
+}
+
+.unavailable{
+	color:red;
+}
+
+
 
